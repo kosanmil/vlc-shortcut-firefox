@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://vlc_shortcut/locale/vlc_shortcut.dtd">
+<overlay id="vlc_shortcut_overlay" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">	
+	<script type="application/x-javascript" src="jquery-1.11.2.min.js" />
+	<script type="application/x-javascript" src="vlc_shortcut.js" />	
+	<popup id="contentAreaContextMenu">
+		<menuitem id="vlc_play" label="&vlc.play.video;" insertbefore="spell-no-suggestions"
+			class="menuitem-iconic" image="chrome://vlc_shortcut/skin/icon_vlc_shortcut_extra_small.png" oncommand="vlcProcess.playVideo(gBrowser.contentDocument.location.href);"/>
+		<menuitem id="vlc_enqueue" label="&vlc.enqueue.video;" insertbefore="spell-no-suggestions"
+			class="menuitem-iconic" image="chrome://vlc_shortcut/skin/icon_vlc_shortcut_extra_small.png" oncommand="vlcProcess.enqueueVideo(gBrowser.contentDocument.location.href);"/>
+		<menuitem id="vlc_play_link" label="&vlc.play.video.link;" insertbefore="vlc_play"
+			class="menuitem-iconic" image="chrome://vlc_shortcut/skin/icon_vlc_shortcut_extra_small.png" oncommand="vlcProcess.playVideo(gContextMenu.linkURL);"/>
+		<menuitem id="vlc_enqueue_link" label="&vlc.enqueue.video.link;" insertafter="vlc_play_link"
+			class="menuitem-iconic" image="chrome://vlc_shortcut/skin/icon_vlc_shortcut_extra_small.png" oncommand="vlcProcess.enqueueVideo(gContextMenu.linkURL);"/>
+	</popup>
+</overlay>

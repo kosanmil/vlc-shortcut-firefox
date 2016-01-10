@@ -1,0 +1,5 @@
+<!ENTITY vlc.play.video "Play current video">
+<!ENTITY vlc.play.video.link "Play video from link">
+<!ENTITY vlc.enqueue.video "Enqueue current video">
+<!ENTITY vlc.enqueue.video.link "Enqueue video from link">
+

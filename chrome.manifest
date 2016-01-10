@@ -1,0 +1,5 @@
+content     vlc_shortcut    chrome/content/
+overlay chrome://browser/content/browser.xul chrome://vlc_shortcut/content/vlc_shortcut.xul
+locale vlc_shortcut en-US chrome/locale/en-US/
+locale vlc_shortcut sr-RS chrome/locale/sr-RS/
+skin vlc_shortcut skin chrome/skin/

@@ -1,0 +1,9 @@
+<!ENTITY options.title "Preferences">
+<!ENTITY options.filepath.label "VLC executable file location:">
+<!ENTITY options.filepath.browse "Browse">
+<!ENTITY options.middleclick.label "Middle mouse click on Youtube video link:">
+<!ENTITY options.ctrlmiddleclick.label "CTRL + Middle mouse click on Youtube video link:">
+<!ENTITY options.shiftmiddleclick.label "SHIFT + Middle mouse click on Youtube video link:">
+<!ENTITY options.clickoption.default "Performs the default browser action">
+<!ENTITY options.clickoption.play "Plays video from link">
+<!ENTITY options.clickoption.enqueue "Enqueues video from link">

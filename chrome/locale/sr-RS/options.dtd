@@ -1,0 +1,9 @@
+<!ENTITY options.title "Подешавања">
+<!ENTITY options.filepath.label "VLC извршна датотека">
+<!ENTITY options.filepath.browse "Претражи">
+<!ENTITY options.middleclick.label "Средњи тастер миша на Youtube линк:">
+<!ENTITY options.ctrlmiddleclick.label "CTRL + Средњи тастер миша на Youtube линк:">
+<!ENTITY options.shiftmiddleclick.label "SHIFT + Средњи тастер миша на Youtube линк:">
+<!ENTITY options.clickoption.default "Обавља подразумевану акцију">
+<!ENTITY options.clickoption.play "Покреће видео са линка">
+<!ENTITY options.clickoption.enqueue "Додаје видео са линка у листу">

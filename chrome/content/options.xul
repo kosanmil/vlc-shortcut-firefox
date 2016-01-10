@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://vlc_shortcut/locale/options.dtd">
+
+<prefwindow id="vlc_shortcut_prefwindow" title="&options.title;" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<script type="application/x-javascript" src="chrome://vlc_shortcut/content/options.js"/>
+	<stringbundle id="vlc_shortcut_stringBundle" src="chrome://vlc_shortcut/locale/vlc_shortcut.properties"/>
+	<preferences>
+		<preference id="pref_vlc_filepath" name="extensions.vlc_shortcut.vlc_filepath" type="string"/>
+		<preference id="pref_middleclick" name="extensions.vlc_shortcut.middleclick" type="int"/>
+		<preference id="pref_ctrlmiddleclick" name="extensions.vlc_shortcut.ctrlmiddleclick" type="int"/>
+		<preference id="pref_shiftmiddleclick" name="extensions.vlc_shortcut.shiftmiddleclick" type="int"/>
+	</preferences>
+
+	<prefpane id="vlc_shortcut_prefpane" label="Preferences" >
+		<vbox align="left">
+			<grid flex="1">
+				<columns>
+					<column flex="2" align="bottom"/>
+					<column flex="1" />
+				</columns>		
+				<rows>
+					<row>
+						<label control="middleclicklist" value="&options.middleclick.label;"/>
+					    <menulist id="middleclicklist" oncommand="commandMiddleClick(event.target)" preference="pref_middleclick" >
+					      <menupopup>
+					        <menuitem label="&options.clickoption.default;" value="0" />
+					        <menuitem label="&options.clickoption.play;" value="1" />
+					        <menuitem label="&options.clickoption.enqueue;" value="2" />
+					      </menupopup>
+					    </menulist>
+					</row>
+					<row>
+						<label control="ctrlmiddleclicklist" value="&options.ctrlmiddleclick.label;"/>
+					    <menulist id="ctrlmiddleclicklist" oncommand="commandCtrlMiddleClick(event.target)" preference="pref_ctrlmiddleclick">
+					      <menupopup>
+					        <menuitem label="&options.clickoption.default;" value="0" />
+					        <menuitem label="&options.clickoption.play;" value="1" />
+					        <menuitem label="&options.clickoption.enqueue;" value="2" />
+					      </menupopup>
+					    </menulist>
+					</row>
+					<row>
+						<label control="shiftmiddleclicklist" value="&options.shiftmiddleclick.label;"/>
+					    <menulist id="shiftmiddleclicklist" oncommand="commandShiftMiddleClick(event.target)" preference="pref_shiftmiddleclick">
+					      <menupopup>
+					        <menuitem label="&options.clickoption.default;" value="0" />
+					        <menuitem label="&options.clickoption.play;" value="1" />
+					        <menuitem label="&options.clickoption.enqueue;" value="2" />
+					      </menupopup>
+					    </menulist>
+					</row>		
+				</rows>
+			</grid>
+			<separator class="groove-thin"/>
+			<label control="vlc_filepath_btn" value="&options.filepath.label;"/>
+			<hbox align="center">		
+				<textbox preference="pref_vlc_filepath" 
+					id="vlc_filepath_textbox" size="50" readonly="true"/>
+		    	<button id="vlc_filepath_btn" label="&options.filepath.browse;" oncommand="browseFilePath();"/>
+			</hbox>
+		</vbox>
+	</prefpane>
+
+</prefwindow>

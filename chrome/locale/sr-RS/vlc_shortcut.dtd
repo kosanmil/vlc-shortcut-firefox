@@ -1,0 +1,5 @@
+<!ENTITY vlc.play.video "Покрени тренутни видео">
+<!ENTITY vlc.play.video.link "Покрени видео са линка">
+<!ENTITY vlc.enqueue.video "Додај тренутни видео у листу">
+<!ENTITY vlc.enqueue.video.link "Додај видео са линка у листу">
+
