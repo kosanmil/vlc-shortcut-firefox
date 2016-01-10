@@ -17,6 +17,8 @@ To install and run the extension from the repository, do the following:
 5. Write the path to the file where the cloned repository is located.
 6. Run Firefox. You should be asked if you want to verify the installation of the add-on, which will require a restart of the browser. After that, the extension is installed.
 
+Feel free to fork the repository and make changes if you have any suggestions on how to make this extension even better.
+
 About the extension
 ---------------
 
