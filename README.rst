@@ -11,7 +11,7 @@ To install the newest version deployed on the official Firefox add-on website, g
 To install and run the extension from the repository, do the following:
 
 1. Clone the repository. Remember the path on the filesystem where you cloned the repository.
-2. Navigate to the the location where your Firefox profile is located (location depends on the operating system. Use the following article to find out where your location is: http://kb.mozillazine.org/Profile_folder_-_Firefox#Navigating_to_the_profile_folder)
+2. Navigate to the the location where your Firefox profile is located (location depends on the operating system. Use the `following article <http://kb.mozillazine.org/Profile_folder_-_Firefox#Navigating_to_the_profile_folder>`_ to find out where your location is.)
 3. Go to the *extensions* folder.
 4. Create a textual file with the name *vlc_shortcut@kosan.kosan* (without .txt).
 5. Write the path to the file where the cloned repository is located.
