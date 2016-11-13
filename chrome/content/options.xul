@@ -4,7 +4,7 @@
 
 <!DOCTYPE window SYSTEM "chrome://vlc_shortcut/locale/options.dtd">
 
-<prefwindow id="vlc_shortcut_prefwindow" title="&options.title;" 
+<prefwindow id="vlc_shortcut_prefwindow" title="&options.title;"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script type="application/x-javascript" src="chrome://vlc_shortcut/content/options.js"/>
 	<stringbundle id="vlc_shortcut_stringBundle" src="chrome://vlc_shortcut/locale/vlc_shortcut.properties"/>
@@ -21,7 +21,7 @@
 				<columns>
 					<column flex="2" align="bottom"/>
 					<column flex="1" />
-				</columns>		
+				</columns>
 				<rows>
 					<row>
 						<label control="middleclicklist" value="&options.middleclick.label;"/>
@@ -52,14 +52,14 @@
 					        <menuitem label="&options.clickoption.enqueue;" value="2" />
 					      </menupopup>
 					    </menulist>
-					</row>		
+					</row>
 				</rows>
 			</grid>
 			<separator class="groove-thin"/>
 			<label control="vlc_filepath_btn" value="&options.filepath.label;"/>
-			<hbox align="center">		
-				<textbox preference="pref_vlc_filepath" 
-					id="vlc_filepath_textbox" size="50" readonly="true"/>
+			<hbox align="center">
+				<textbox preference="pref_vlc_filepath"
+					id="vlc_filepath_textbox" size="50"/>
 		    	<button id="vlc_filepath_btn" label="&options.filepath.browse;" oncommand="browseFilePath();"/>
 			</hbox>
 		</vbox>
