@@ -146,16 +146,38 @@ var vlcProcess = {
 	},
 
 	playVideo : function(url) {
+		var prefsh = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService)
+			.getBranch("extensions.vlc_shortcut.");
+		var selectedValue = prefsh.getIntPref("vq");
 		var initSuccessful = vlcProcess.initProcess();
 		if(!initSuccessful){
 			return;
 		}
 
 		var args = [];
-		args[0] = "--one-instance";
-
-		url = vlcProcess.changeHttpsToHttp(url);
-		args[1] = url;
+		var OS = Services.appinfo.OS;
+		if(OS == "Darwin"){
+			if(selectedValue){
+				args[0] = "--preferred-resolution=" + selectedValue.toString();
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[1] = url;
+			}else{
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[0] = url;
+			}
+		}else{
+			if(selectedValue){
+				args[0] = "--one-instance";
+				args[1] = "--preferred-resolution=" + selectedValue.toString();
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[2] = url;
+			}else{
+				args[0] = "--one-instance";
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[1] = url;
+			}
+		}
 
 		try {
 			vlcProcess.process.run(false, args, args.length);
@@ -173,11 +195,17 @@ var vlcProcess = {
 		}
 
 		var args = [];
-		args[0] = "--one-instance";
-		args[1] = "--playlist-enqueue";
+		var OS = Services.appinfo.OS;
+		if(OS == "Darwin"){
+			url = vlcProcess.changeHttpsToHttp(url);
+			args[0] = url;
+		}else{
+			args[0] = "--one-instance";
+			args[1] = "--playlist-enqueue";
 
-		url = vlcProcess.changeHttpsToHttp(url);
-		args[2] = url;
+			url = vlcProcess.changeHttpsToHttp(url);
+			args[2] = url;
+		}
 
 		try {
 			vlcProcess.process.run(false, args, args.length);
