@@ -13,6 +13,7 @@
 		<preference id="pref_middleclick" name="extensions.vlc_shortcut.middleclick" type="int"/>
 		<preference id="pref_ctrlmiddleclick" name="extensions.vlc_shortcut.ctrlmiddleclick" type="int"/>
 		<preference id="pref_shiftmiddleclick" name="extensions.vlc_shortcut.shiftmiddleclick" type="int"/>
+		<preference id="pref_vq" name="extensions.vlc_shortcut.vq" type="int"/>
 	</preferences>
 
 	<prefpane id="vlc_shortcut_prefpane" label="Preferences" >
@@ -59,10 +60,29 @@
 			<label control="vlc_filepath_btn" value="&options.filepath.label;"/>
 			<hbox align="center">
 				<textbox preference="pref_vlc_filepath"
-					id="vlc_filepath_textbox" size="50"/>
+					id="vlc_filepath_textbox" size="50" />
 		    	<button id="vlc_filepath_btn" label="&options.filepath.browse;" oncommand="browseFilePath();"/>
 			</hbox>
+			<separator class="groove-thin"/>
+			<grid flex="1">
+				<columns>
+					<column flex="2" align="bottom"/>
+					<column flex="1" />
+				</columns>
+				<rows>
+					<row>
+						<label control="vqlist" value="Video Quality"/>
+							<menulist id="vqlist" oncommand="videoQuality(event.target)" preference="pref_vq" >
+								<menupopup>
+									<menuitem label="240" value="240" />
+									<menuitem label="360" value="360" />
+									<menuitem label="480" value="480" />
+									<menuitem label="720" value="720" />
+								</menupopup>
+							</menulist>
+						</row>
+					</rows>
+				</grid>
 		</vbox>
 	</prefpane>
-
 </prefwindow>
