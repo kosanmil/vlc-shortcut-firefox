@@ -38,4 +38,6 @@ Windows 32 bit: C:\Program Files\VideoLAN\VLC\vlc.exe
 Windows 64 bit: C:\Program Files (x86)\VideoLAN\VLC\vlc.exe
 Linux: /usr/bin/vlc
 
+NOTE: When you choose Video Quality from preferences menu of this addon, you have to restart VLC. This not related to this addon. VLC doesnt allow instant changes about quality codecs.
+
 If you find any bugs or if you have any suggestion, please leave a comment or send me an email.
