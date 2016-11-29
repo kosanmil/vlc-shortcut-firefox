@@ -7,3 +7,10 @@
 <!ENTITY options.clickoption.default "Performs the default browser action">
 <!ENTITY options.clickoption.play "Plays video from link">
 <!ENTITY options.clickoption.enqueue "Enqueues video from link">
+<!ENTITY options.videoquality.label "Preferred Video Quality (needs VLC restart):">
+<!ENTITY options.videoquality.240 "240p">
+<!ENTITY options.videoquality.360 "360p">
+<!ENTITY options.videoquality.480 "480p">
+<!ENTITY options.videoquality.576 "576p">
+<!ENTITY options.videoquality.720 "720p">
+<!ENTITY options.videoquality.best "Best Available">

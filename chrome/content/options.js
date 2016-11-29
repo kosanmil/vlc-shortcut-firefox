@@ -22,8 +22,15 @@ function commandShiftMiddleClick(source) {
 	return true;
 }
 
+function videoQuality(source) {
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+		.getService(Components.interfaces.nsIPrefService)
+		.getBranch("extensions.vlc_shortcut.");
+	prefs.setIntPref("vq", source.value);
+	return true;
+}
 /**
-* Function for browsing the filepath of the process to call 
+* Function for browsing the filepath of the process to call
 * when the vlcProcess.playVideo and vlcProcess.enqueueVideo are called
 * The filepath must point to a command or an executable file (depending on the Operating System).
 */
@@ -35,7 +42,7 @@ function browseFilePath(){
 	           .createInstance(nsIFilePicker);
 	filePicker.init(window, "Browse", nsIFilePicker.modeOpen);
 	filePicker.appendFilters(nsIFilePicker.filterAll);
-	
+
 	var retVal = filePicker.show();
 	if (retVal == nsIFilePicker.returnOK ) {
 		var pickedFile = filePicker.file.QueryInterface(nsILocalFile);

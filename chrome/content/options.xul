@@ -4,7 +4,7 @@
 
 <!DOCTYPE window SYSTEM "chrome://vlc_shortcut/locale/options.dtd">
 
-<prefwindow id="vlc_shortcut_prefwindow" title="&options.title;" 
+<prefwindow id="vlc_shortcut_prefwindow" title="&options.title;"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<script type="application/x-javascript" src="chrome://vlc_shortcut/content/options.js"/>
 	<stringbundle id="vlc_shortcut_stringBundle" src="chrome://vlc_shortcut/locale/vlc_shortcut.properties"/>
@@ -13,6 +13,7 @@
 		<preference id="pref_middleclick" name="extensions.vlc_shortcut.middleclick" type="int"/>
 		<preference id="pref_ctrlmiddleclick" name="extensions.vlc_shortcut.ctrlmiddleclick" type="int"/>
 		<preference id="pref_shiftmiddleclick" name="extensions.vlc_shortcut.shiftmiddleclick" type="int"/>
+		<preference id="pref_vq" name="extensions.vlc_shortcut.vq" type="int"/>
 	</preferences>
 
 	<prefpane id="vlc_shortcut_prefpane" label="Preferences" >
@@ -21,7 +22,7 @@
 				<columns>
 					<column flex="2" align="bottom"/>
 					<column flex="1" />
-				</columns>		
+				</columns>
 				<rows>
 					<row>
 						<label control="middleclicklist" value="&options.middleclick.label;"/>
@@ -52,17 +53,38 @@
 					        <menuitem label="&options.clickoption.enqueue;" value="2" />
 					      </menupopup>
 					    </menulist>
-					</row>		
+					</row>
 				</rows>
 			</grid>
 			<separator class="groove-thin"/>
 			<label control="vlc_filepath_btn" value="&options.filepath.label;"/>
-			<hbox align="center">		
-				<textbox preference="pref_vlc_filepath" 
-					id="vlc_filepath_textbox" size="50" readonly="true"/>
+			<hbox align="center">
+				<textbox preference="pref_vlc_filepath"
+					id="vlc_filepath_textbox" size="50" />
 		    	<button id="vlc_filepath_btn" label="&options.filepath.browse;" oncommand="browseFilePath();"/>
 			</hbox>
+			<separator class="groove-thin"/>
+			<grid flex="1">
+				<columns>
+					<column flex="2" align="bottom"/>
+					<column flex="1" />
+				</columns>
+				<rows>
+					<row>
+						<label control="vqlist" value="&options.videoquality.label;"/>
+							<menulist id="vqlist" oncommand="videoQuality(event.target)" preference="pref_vq" >
+								<menupopup>
+									<menuitem label="&options.videoquality.240;" value="240" />
+									<menuitem label="&options.videoquality.360;" value="360" />
+									<menuitem label="&options.videoquality.480;" value="480" />
+									<menuitem label="&options.videoquality.576;" value="576" />
+									<menuitem label="&options.videoquality.720;" value="720" />
+									<menuitem label="&options.videoquality.best;" value="-1" />
+								</menupopup>
+							</menulist>
+						</row>
+					</rows>
+				</grid>
 		</vbox>
 	</prefpane>
-
 </prefwindow>

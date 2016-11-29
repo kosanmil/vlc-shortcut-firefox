@@ -13,7 +13,7 @@ var vlcMenuItem = {
 	*/
 	init : function() {
 		var contentAreaContextMenu = document.getElementById("contentAreaContextMenu");
-		if (contentAreaContextMenu) 
+		if (contentAreaContextMenu)
 			contentAreaContextMenu.addEventListener("popupshowing", vlcMenuItem.onPopupShowing, false);
 
 		window.addEventListener("click", vlcMenuItem.linkClickListener, false);
@@ -54,7 +54,7 @@ var vlcMenuItem = {
 			e.preventDefault();
 			e.stopPropagation();
 			vlcProcess.playVideo(url);
-		} 
+		}
 		else if (action === 2) {
 			//Enqueue video
 			e.preventDefault();
@@ -116,7 +116,7 @@ var vlcMenuItem = {
 var vlcProcess = {
 
 	/**
-	* Initialises the process to call. 
+	* Initialises the process to call.
 	* Adds the command path to the process
 	*/
 	initProcess : function() {
@@ -124,12 +124,12 @@ var vlcProcess = {
 			.createInstance(Components.interfaces.nsIProcess);
 		vlcProcess.file = Components.classes["@mozilla.org/file/local;1"]
 			.createInstance(Components.interfaces.nsILocalFile);
-		
+
 		var path = vlcProcess.getPlayerFilepath();
 		vlcProcess.file.initWithPath(path);
 
 		if(vlcProcess.file.exists()){
-			vlcProcess.process.init(vlcProcess.file);			
+			vlcProcess.process.init(vlcProcess.file);
 		}
 		else {
 			var title = "VLC Shortcut";
@@ -146,16 +146,38 @@ var vlcProcess = {
 	},
 
 	playVideo : function(url) {
+		var prefsh = Components.classes["@mozilla.org/preferences-service;1"]
+			.getService(Components.interfaces.nsIPrefService)
+			.getBranch("extensions.vlc_shortcut.");
+		var selectedValue = prefsh.getIntPref("vq");
 		var initSuccessful = vlcProcess.initProcess();
 		if(!initSuccessful){
 			return;
 		}
 
 		var args = [];
-		args[0] = "--one-instance";
-
-		url = vlcProcess.changeHttpsToHttp(url);
-		args[1] = url;
+		var OS = Services.appinfo.OS;
+		if(OS == "Darwin"){
+			if(selectedValue){
+				args[0] = "--preferred-resolution=" + selectedValue.toString();
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[1] = url;
+			}else{
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[0] = url;
+			}
+		}else{
+			if(selectedValue){
+				args[0] = "--one-instance";
+				args[1] = "--preferred-resolution=" + selectedValue.toString();
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[2] = url;
+			}else{
+				args[0] = "--one-instance";
+				url = vlcProcess.changeHttpsToHttp(url);
+				args[1] = url;
+			}
+		}
 
 		try {
 			vlcProcess.process.run(false, args, args.length);
@@ -173,11 +195,17 @@ var vlcProcess = {
 		}
 
 		var args = [];
-		args[0] = "--one-instance";
-		args[1] = "--playlist-enqueue";
+		var OS = Services.appinfo.OS;
+		if(OS == "Darwin"){
+			url = vlcProcess.changeHttpsToHttp(url);
+			args[0] = url;
+		}else{
+			args[0] = "--one-instance";
+			args[1] = "--playlist-enqueue";
 
-		url = vlcProcess.changeHttpsToHttp(url);
-		args[2] = url;
+			url = vlcProcess.changeHttpsToHttp(url);
+			args[2] = url;
+		}
 
 		try {
 			vlcProcess.process.run(false, args, args.length);
@@ -198,11 +226,11 @@ var vlcProcess = {
 				filepath = "/usr/bin/vlc";
 			}
 			else if(OS == "WINNT"){
-			
+
 				var file = Components.classes["@mozilla.org/file/local;1"]
 						.createInstance(Components.interfaces.nsILocalFile);
-				//trying path for 32-bit Windows		
-				file.initWithPath("C:\\Program Files\\VideoLAN\\VLC\\vlc.exe");		
+				//trying path for 32-bit Windows
+				file.initWithPath("C:\\Program Files\\VideoLAN\\VLC\\vlc.exe");
 				if(file.exists()){
 					filepath = "C:\\Program Files\\VideoLan\\VLC\\vlc.exe";
 				}
@@ -210,8 +238,17 @@ var vlcProcess = {
 				else {
 					file.initWithPath("C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe");
 					if(file.exists()){
-						filepath = "C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe";	
+						filepath = "C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe";
 					}
+				}
+			}
+			else if(OS == "Darwin"){
+				var file = Components.classes["@mozilla.org/file/local;1"]
+						.createInstance(Components.interfaces.nsILocalFile);
+
+				file.initWithPath("/Applications/VLC.app/Contents/MacOS/VLC");
+				if(file.exists()){
+					filepath = "/Applications/VLC.app/Contents/MacOS/VLC";
 				}
 			}
 			prefsBranch.setCharPref("vlc_filepath", filepath);
@@ -230,7 +267,7 @@ var vlcProcess = {
 }
 
 /**
- * JavaScript function to match (and return) the video Id 
+ * JavaScript function to match (and return) the video Id
  * of any valid Youtube Url, given as input string.
  * @author: Stephan Schmitz <eyecatchup@gmail.com>
  * @url: http://stackoverflow.com/a/10315969/624466
