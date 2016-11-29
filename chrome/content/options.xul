@@ -71,13 +71,15 @@
 				</columns>
 				<rows>
 					<row>
-						<label control="vqlist" value="Video Quality"/>
+						<label control="vqlist" value="&options.videoquality.label;"/>
 							<menulist id="vqlist" oncommand="videoQuality(event.target)" preference="pref_vq" >
 								<menupopup>
-									<menuitem label="240" value="240" />
-									<menuitem label="360" value="360" />
-									<menuitem label="480" value="480" />
-									<menuitem label="720" value="720" />
+									<menuitem label="&options.videoquality.240;" value="240" />
+									<menuitem label="&options.videoquality.360;" value="360" />
+									<menuitem label="&options.videoquality.480;" value="480" />
+									<menuitem label="&options.videoquality.576;" value="576" />
+									<menuitem label="&options.videoquality.720;" value="720" />
+									<menuitem label="&options.videoquality.best;" value="-1" />
 								</menupopup>
 							</menulist>
 						</row>
