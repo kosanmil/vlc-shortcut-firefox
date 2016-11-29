@@ -3,7 +3,7 @@
 <!DOCTYPE window SYSTEM "chrome://vlc_shortcut/locale/vlc_shortcut.dtd">
 <overlay id="vlc_shortcut_overlay" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">	
-	<script type="application/x-javascript" src="jquery-1.11.2.min.js" />
+	<script type="application/x-javascript" src="jquery-3.1.1.min.js" />
 	<script type="application/x-javascript" src="vlc_shortcut.js" />	
 	<popup id="contentAreaContextMenu">
 		<menuitem id="vlc_play" label="&vlc.play.video;" insertbefore="spell-no-suggestions"
