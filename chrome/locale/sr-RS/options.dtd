@@ -7,3 +7,10 @@
 <!ENTITY options.clickoption.default "Обавља подразумевану акцију">
 <!ENTITY options.clickoption.play "Покреће видео са линка">
 <!ENTITY options.clickoption.enqueue "Додаје видео са линка у листу">
+<!ENTITY options.videoquality.label "Преференцијални квалитет видеа (потребно рестартовати VLC):">
+<!ENTITY options.videoquality.240 "240p">
+<!ENTITY options.videoquality.360 "360p">
+<!ENTITY options.videoquality.480 "480p">
+<!ENTITY options.videoquality.576 "576p">
+<!ENTITY options.videoquality.720 "720p">
+<!ENTITY options.videoquality.best "Најбољи могући">
