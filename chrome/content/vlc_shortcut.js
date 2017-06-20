@@ -274,7 +274,7 @@ var vlcProcess = {
  * modified to include m.youtube and youtube-nocookie.com domains
  */
 function ytVidId(url) {
-	var ytRegex = /^(?:https?:\/\/)?(?:(?:www|m)\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+	var ytRegex = /^(?:https?:\/\/)?(?:(?:www|m|gaming)\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
 	return (url.match(ytRegex)) ? RegExp.$1 : false;
 }
 
